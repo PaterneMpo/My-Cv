@@ -45,7 +45,7 @@ To host this portfolio yourself:
 **1. Clone the repository:**
 
 ```bash
-git clone https://github.com/PaterneMpo/My-Cv.github.io.git
+git clone https://github.com/PaterneMpo/My-Cv.git
 ```
 
 **2. Open with a Live Server:**
