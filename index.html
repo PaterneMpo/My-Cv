@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paterne M'PO | Web Scraping & AI Automation Expert</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0ea5e9;
+            --primary-glow: rgba(14, 165, 233, 0.4);
+            --secondary: #6366f1;
+            --darker: #050b18;
+            --card-bg: rgba(15, 23, 42, 0.6);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--darker);
+            color: #f1f5f9;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .code-font { font-family: 'Fira Code', monospace; }
+
+        /* Background Graphics */
+        .bg-grid {
+            background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+
+        .glow-sphere {
+            position: absolute;
+            width: 40vw;
+            height: 40vw;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+            filter: blur(60px);
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        /* Elements Styling */
+        .glass {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+            box-shadow: 0 10px 20px -10px rgba(14, 165, 233, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px -10px rgba(14, 165, 233, 0.6);
+            filter: brightness(1.1);
+        }
+
+        .skill-tag {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .skill-tag:hover {
+            border-color: var(--primary);
+            background: rgba(14, 165, 233, 0.1);
+            color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .project-card {
+            transition: all 0.4s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(14, 165, 233, 0.4);
+            box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--darker); }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .float-animation { animation: float 6s ease-in-out infinite; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-grid">
+
+    <!-- Glowing Background Elements -->
+    <div class="glow-sphere top-0 -left-20"></div>
+    <div class="glow-sphere bottom-0 -right-20" style="background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);"></div>
+
+    <!-- Header / Navigation -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300 px-6 py-6" id="navbar">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass rounded-2xl px-8 py-3">
+            <div class="text-2xl font-black code-font tracking-tighter">
+                <span class="text-sky-500">M.</span>Paterne
+            </div>
+            <div class="hidden md:flex gap-10 text-xs font-bold uppercase tracking-widest text-slate-400">
+                <a href="#about" class="hover:text-sky-400 transition-colors">About</a>
+                <a href="#skills" class="hover:text-sky-400 transition-colors">Stack</a>
+                <a href="#projects" class="hover:text-sky-400 transition-colors">Portfolio</a>
+                <a href="#contact" class="hover:text-sky-400 transition-colors">Contact</a>
+            </div>
+            <a href="mailto:moktmunk@gmail.com" class="btn-primary text-white px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest">
+                Get in touch
+            </a>
+        </div>
+    </nav>
+
+    <main class="relative pt-40 pb-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Hero Section -->
+            <section id="about" class="grid lg:grid-cols-12 gap-16 items-center mb-48">
+                <div class="lg:col-span-7 reveal active">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-[10px] font-black uppercase tracking-widest mb-6">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
+                        </span>
+                        Available for new projects
+                    </div>
+                    <h1 class="text-6xl md:text-8xl font-black mb-8 leading-[0.95] tracking-tight">
+                        Automation <br><span class="gradient-text">Architect.</span>
+                    </h1>
+                    <p class="text-xl text-slate-400 mb-10 leading-relaxed max-w-2xl font-light">
+                        Expert in <span class="text-white font-semibold">Web Scraping</span> and <span class="text-white font-semibold">AI Automation</span>. I build intelligent systems that extract, process, and leverage data using RAG and LLM orchestration.
+                    </p>
+                    <div class="flex flex-wrap gap-5">
+                        <a href="https://github.com/PaterneMpo" target="_blank" class="flex items-center gap-3 glass hover:bg-white/5 px-8 py-4 rounded-2xl transition-all border border-white/10 group">
+                            <i class="fab fa-github text-2xl group-hover:text-sky-400 transition-colors"></i>
+                            <span class="font-bold tracking-tight">Review Source Code</span>
+                        </a>
+                        <div class="flex items-center gap-4 px-6 text-slate-500 italic text-sm">
+                            <i class="fas fa-terminal text-sky-500/50"></i>
+                            python --version 3.11.x
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 flex justify-center reveal active" style="transition-delay: 0.2s">
+                    <div class="relative group float-animation">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-sky-500 to-indigo-600 rounded-[2rem] blur-2xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                        <div class="relative w-72 h-96 md:w-96 md:h-[32rem] bg-slate-900 rounded-[2rem] overflow-hidden border border-white/10">
+                            <img src="https://avatars.githubusercontent.com/u/93155180?v=4" alt="Paterne M'PO" class="w-full h-full object-cover mix-blend-luminosity hover:mix-blend-normal transition-all duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-darker via-transparent to-transparent"></div>
+                            <div class="absolute bottom-10 left-10">
+                                <p class="text-2xl font-black text-white">M'PO</p>
+                                <p class="text-sky-400 font-mono text-sm tracking-widest">K. Paterne</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Grid -->
+            <section class="mb-48 reveal">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="glass p-10 rounded-[2.5rem] border-white/5 group hover:border-sky-500/30 transition-colors">
+                        <i class="fas fa-database text-sky-500 text-3xl mb-6 opacity-50"></i>
+                        <h4 class="text-4xl font-black mb-2 tracking-tighter">500k+</h4>
+                        <p class="text-slate-400 text-sm font-medium uppercase tracking-widest">Data points processed / day</p>
+                    </div>
+                    <div class="glass p-10 rounded-[2.5rem] border-white/5 group hover:border-sky-500/30 transition-colors">
+                        <i class="fas fa-robot text-indigo-500 text-3xl mb-6 opacity-50"></i>
+                        <h4 class="text-4xl font-black mb-2 tracking-tighter">AI-Driven</h4>
+                        <p class="text-slate-400 text-sm font-medium uppercase tracking-widest">Autonomous RAG Workflows</p>
+                    </div>
+                    <div class="glass p-10 rounded-[2.5rem] border-white/5 group hover:border-sky-500/30 transition-colors">
+                        <i class="fas fa-shield-halved text-emerald-500 text-3xl mb-6 opacity-50"></i>
+                        <h4 class="text-4xl font-black mb-2 tracking-tighter">99.9%</h4>
+                        <p class="text-slate-400 text-sm font-medium uppercase tracking-widest">Bot bypass success rate</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Expertise & Stack -->
+            <section id="skills" class="mb-48 reveal">
+                <div class="flex flex-col items-center text-center mb-20">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6 tracking-tight">Technical <span class="text-sky-500">Mastery.</span></h2>
+                    <div class="h-1.5 w-24 bg-sky-500 rounded-full"></div>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-20">
+                    <div class="space-y-12">
+                        <div class="group">
+                            <div class="flex justify-between items-end mb-4">
+                                <div>
+                                    <h5 class="text-xl font-bold">Data Extraction & Scraping</h5>
+                                    <p class="text-xs text-slate-500 font-mono">Scrapy, Playwright, Stealth Tactics</p>
+                                </div>
+                                <span class="text-sky-500 font-black">98%</span>
+                            </div>
+                            <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-sky-600 to-sky-400 w-[98%] group-hover:brightness-125 transition-all duration-1000"></div>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div class="flex justify-between items-end mb-4">
+                                <div>
+                                    <h5 class="text-xl font-bold">AI Orchestration & RAG</h5>
+                                    <p class="text-xs text-slate-500 font-mono">n8n, LangChain, Pinecone, OpenAI</p>
+                                </div>
+                                <span class="text-sky-500 font-black">95%</span>
+                            </div>
+                            <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-indigo-600 to-indigo-400 w-[95%] group-hover:brightness-125 transition-all duration-1000"></div>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div class="flex justify-between items-end mb-4">
+                                <div>
+                                    <h5 class="text-xl font-bold">Backend & Automation</h5>
+                                    <p class="text-xs text-slate-500 font-mono">FastAPI, Docker, Redis, GitHub Actions</p>
+                                </div>
+                                <span class="text-sky-500 font-black">90%</span>
+                            </div>
+                            <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-emerald-600 to-emerald-400 w-[90%] group-hover:brightness-125 transition-all duration-1000"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4 h-fit">
+                        <span class="skill-tag px-6 py-3 rounded-2xl text-sm font-bold tracking-tight uppercase">Python Ecosystem</span>
+                        <span class="skill-tag px-6 py-3 rounded-2xl text-sm font-bold tracking-tight uppercase">n8n Workflows</span>
+                        <span class="skill-tag px-6 py-3 rounded-2xl text-sm font-bold tracking-tight uppercase">Vector Databases</span>
+                        <span class="skill-tag px-6 py-3 rounded-2xl text-sm font-bold tracking-tight uppercase">Retrieval-Augmented Gen</span>
+                        <span class="skill-tag px-6 py-3 rounded-2xl text-sm font-bold tracking-tight uppercase">Large Language Models</span>
+                        <span class="skill-tag px-6 py-3 rounded-2xl text-sm font-bold tracking-tight uppercase">Anti-Bot Systems</span>
+                        <span class="skill-tag px-6 py-3 rounded-2xl text-sm font-bold tracking-tight uppercase">Make / Zapier</span>
+                        <span class="skill-tag px-4 py-3 rounded-2xl text-sm font-bold tracking-tight uppercase">Prompt Engineering</span>
+                        <span class="skill-tag px-6 py-3 rounded-2xl text-sm font-bold tracking-tight uppercase">Data Engineering</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Grid -->
+            <section id="projects" class="mb-48 reveal">
+                <div class="mb-20">
+                    <h2 class="text-4xl font-black mb-4">Real-world <span class="text-sky-500">Use Cases.</span></h2>
+                    <p class="text-slate-400 max-w-xl">Advanced automation and data retrieval pipelines built for scale.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-10">
+                    <!-- Project 1: AI RAG -->
+                    <div class="project-card glass p-10 rounded-[3rem] border-white/5 group cursor-pointer relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-8 text-sky-500/10 group-hover:text-sky-500/30 transition-colors">
+                            <i class="fas fa-brain text-8xl"></i>
+                        </div>
+                        <div class="relative z-10">
+                            <span class="text-[10px] font-black tracking-[0.2em] text-sky-500 uppercase mb-4 block">AI & Knowledge Management</span>
+                            <h3 class="text-2xl font-black mb-4 group-hover:text-sky-400 transition-colors tracking-tight">Autonomous RAG Scraper</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-8 font-light">
+                                Developed an end-to-end pipeline that scrapes technical documentation, indexes it in a Vector DB (Pinecone) via n8n, and provides an AI agent with context-aware answers.
+                            </p>
+                            <div class="flex gap-3">
+                                <span class="px-3 py-1 bg-white/5 rounded-lg text-[10px] font-bold text-slate-300">n8n</span>
+                                <span class="px-3 py-1 bg-white/5 rounded-lg text-[10px] font-bold text-slate-300">Pinecone</span>
+                                <span class="px-3 py-1 bg-white/5 rounded-lg text-[10px] font-bold text-slate-300">OpenAI</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Sales Automation -->
+                    <div class="project-card glass p-10 rounded-[3rem] border-white/5 group cursor-pointer relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-8 text-indigo-500/10 group-hover:text-indigo-500/30 transition-colors">
+                            <i class="fas fa-network-wired text-8xl"></i>
+                        </div>
+                        <div class="relative z-10">
+                            <span class="text-[10px] font-black tracking-[0.2em] text-indigo-500 uppercase mb-4 block">Sales Intelligence</span>
+                            <h3 class="text-2xl font-black mb-4 group-hover:text-indigo-400 transition-colors tracking-tight">Smart Lead Enrichment</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-8 font-light">
+                                Integrated Playwright scrapers with LLMs to analyze company websites, identify pain points, and generate personalized cold emails automatically.
+                            </p>
+                            <div class="flex gap-3">
+                                <span class="px-3 py-1 bg-white/5 rounded-lg text-[10px] font-bold text-slate-300">Playwright</span>
+                                <span class="px-3 py-1 bg-white/5 rounded-lg text-[10px] font-bold text-slate-300">Make</span>
+                                <span class="px-3 py-1 bg-white/5 rounded-lg text-[10px] font-bold text-slate-300">Anthropic</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section class="mb-48 reveal">
+                <div class="glass p-12 rounded-[3.5rem] border-white/5 flex flex-col md:flex-row items-center justify-between gap-10">
+                    <div class="flex items-center gap-8">
+                        <div class="w-20 h-20 bg-sky-500/20 rounded-3xl flex items-center justify-center text-sky-500 text-3xl">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-black tracking-[0.2em] text-sky-500 uppercase mb-2 block">Bachelor's Degree</p>
+                            <h3 class="text-2xl font-black tracking-tight">Network & Telecommunications Engineering</h3>
+                            <p class="text-slate-400 font-medium">Protestant University of West Africa</p>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-black text-slate-700 font-mono">2021—2023</div>
+                </div>
+            </section>
+
+            <!-- Contact -->
+            <section id="contact" class="reveal">
+                <div class="bg-gradient-to-br from-sky-600 to-indigo-700 p-1 rounded-[4rem]">
+                    <div class="bg-darker rounded-[3.8rem] p-12 md:p-24 text-center">
+                        <h2 class="text-5xl md:text-7xl font-black mb-8 tracking-tighter">Ready to <span class="gradient-text">automate</span>?</h2>
+                        <p class="text-slate-400 text-lg mb-16 max-w-xl mx-auto font-light leading-relaxed">
+                            Looking to build smart data pipelines or AI-driven workflows? Let's connect and discuss your project.
+                        </p>
+                        <div class="flex flex-col md:flex-row justify-center gap-6">
+                            <a href="mailto:moktmunk@gmail.com" class="btn-primary px-12 py-5 rounded-2xl font-black uppercase tracking-widest text-sm flex items-center justify-center gap-3">
+                                <i class="fas fa-paper-plane"></i> Contact Me
+                            </a>
+                            <a href="https://github.com/PaterneMpo" target="_blank" class="glass px-12 py-5 rounded-2xl font-black uppercase tracking-widest text-sm flex items-center justify-center gap-3 hover:bg-white/5">
+                                <i class="fab fa-github"></i> Open Source
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-20 text-center">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="h-px w-full bg-white/5 mb-12"></div>
+            <p class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-600">
+                Paterne M'PO — AI & Automation Architect © 2024
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Reveal Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+
+        // Navbar blur on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-4');
+                nav.classList.remove('py-6');
+            } else {
+                nav.classList.add('py-6');
+                nav.classList.remove('py-4');
+            }
+        });
+
+        // Console Secret
+        console.log("%c 🤖 AI Automation Expert detected. ", "background: #6366f1; color: #fff; font-weight: bold; padding: 4px; border-radius: 4px;");
+        console.log("Status: READY TO AUTOMATE THE FUTURE.");
+    </script>
+</body>
+</html>
